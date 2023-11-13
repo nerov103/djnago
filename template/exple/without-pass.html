@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Password Change</title>
+</head>
+<body>
+    
+<form method="POST">
+    {% csrf_token %}
+    {% if chng.non_field_errors %}
+    {% for err in chng.non_field_errors %}
+    <h2>{{err}}</h2>
+    {% endfor %}
+    {% endif %}
+
+    {% for i in chng %}
+    {{i.label_tag}}
+    {{i}}<br><br>
+    {{i.errors | striptags}}  
+    {% endfor %}
+
+<input type="submit" value="Save">
+<a href="{% url 'logout'%}">Logout!</a>
+</form>
+
+
+</body>
+</html>

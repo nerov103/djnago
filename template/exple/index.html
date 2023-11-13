@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weallcoem to django</title>
+</head>
+<style>
+    #fom {
+
+        text-align: center;
+        padding: 10px;
+      }
+      h1{
+        text-align: center;
+        color: red;
+      }
+</style>
+<body>
+
+<form method="POST" id="fom" novalidate> 
+<h1> Login This From </h1>
+    {% csrf_token %}
+    {% if fom.non_field_errors %}
+    {% for error in fom.non_field_errors %}
+    <h1>{{error}}</h1>
+    {% endfor %}
+    {% endif %}
+    {% for fom_vlu in fom %}
+    {{fom_vlu.label_tag}}
+    {{fom_vlu}}<br><br>
+    {{fom_vlu.errors | striptags}}
+    {% endfor %}
+    <input type="submit" value="submit">
+    <a href="{% url 'render'%}">Registrations!</a>
+</form>
+ 
+
+
+
+
+
+
+
+</body>
+</html>

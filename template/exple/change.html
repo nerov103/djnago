@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+</head>
+<body>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {% if vlu.non_field_errors %}
+        {% for error in vlu.non_field_errors %}
+        <h1>{{error}}</h1>
+        {% endfor %}
+        {% endif %}
+
+        {% for vlu in ch %}
+        {{ vlu.label_tag }}
+        {{vlu}}<br><br>
+        {{vlu.errors | striptags}}
+        {% endfor %}
+        <input type="submit" value="Change!">
+        <a href="{% url 'logout'%}">Logout</a>
+    </form>
+
+
+
+</body>
+</html>
+
+
