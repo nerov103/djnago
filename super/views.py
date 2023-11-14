@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 #Create Your ' Function
@@ -11,11 +11,18 @@ from django.contrib.auth.forms import UserCreationForm
 def registration(request):
     return render(request, 'exple/registration.html')
 
+
+
 def submit(request):
     return render(request, 'exple/submit.html')
 
-def dan(request):
-    return render(request, 'exple/suc.html')
+
+# # # Successfully Login 
+# def dan(request):
+#     ff = UserChangeForm()
+#     return render(request, 'exple/suc.html', {'chng_from':ff})
+
+
 
 
  

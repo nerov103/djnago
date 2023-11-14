@@ -6,13 +6,33 @@
     <title>weallcome</title>
 </head>
 <body>
+   
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {% if data_frm.non_field_errors %}
+        {% for error in data_frm.non_field_errors %}
+        <h1>{{error}}</h1>
+        {% endfor %}
+        {% endif%}
+        {% for i in data_frm  %}
+        {{ i.label_tag }}
+        {{i}}<br><br>
+        {{i.errors | striptags }}
+        {% endfor %}
+        <input type="submit" value="save">
+    </form>
     
-    
+
     <h1>Registration Successful</h1>
     <p>Thank you for registering. You can now login to your account.</p>
+    
+
     <a href="{% url  'logout'%}">Logout!</a>
     <a href="{% url 'passw'%}">Change pass usgin old password</a>
     <a href="{% url 'chn'%}">Change pass without old password</a>
+
+
+
 
 
 </body>
