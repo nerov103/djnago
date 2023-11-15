@@ -24,7 +24,6 @@ def login_from(request):
     if request.method=="POST":         
         frm = AuthenticationForm(request=request, data=request.POST)
         if frm.is_valid():
-            print('POST Method!')
             usern = frm.cleaned_data['username']
             passw = frm.cleaned_data['password']
             user = authenticate(username=usern, password=passw)
@@ -93,5 +92,6 @@ def chng_pass_without_old_pass(request):
 
 
 
-
+def x():
+    pass
 
