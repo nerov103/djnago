@@ -92,6 +92,3 @@ def chng_pass_without_old_pass(request):
 
 
 
-def x():
-    pass
-
