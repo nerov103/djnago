@@ -4,7 +4,7 @@ def first_middeware(get_response):
     def first_fun(request):
         print('This is before view')
         response = get_response(request)
-        print('THis is before view')
+        print('THis is after view')
         return response
     return first_fun
 

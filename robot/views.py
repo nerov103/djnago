@@ -91,4 +91,8 @@ def chng_pass_without_old_pass(request):
         return HttpResponseRedirect('/superr/login')
 
 
+#meddelwear function
+def midd(request):
+    print('1st middeware')
+    return HttpResponse('This is 1st middweare')
 

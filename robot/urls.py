@@ -9,10 +9,11 @@ urlpatterns = [
     path('change/', views.Change_pass, name='passw'),
     path('oldpss/', views.chng_pass_without_old_pass, name='chn'),
     path('sube/', views.successfully),
-
+    path('middel/', views.midd),
 
 ]
 
 
 
 
+ 
