@@ -36,6 +36,10 @@ def userr(request):
     return render(request, 'exple/render.html', {'fome': fome})
 
 
-
-
-
+#Creating a function in django
+def data_pass(request):
+    data = {
+        'user' : 'Nerov Ahmead',
+        'eml' : 'email@gamil.com'
+    }
+    return render(request, 'test/index.html', {'data': data})
