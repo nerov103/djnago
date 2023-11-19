@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weallcome</title>
+    <style>
+        img{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        #reg{
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: black;
+            top: 20px;
+            padding: 10px 15px;
+            text-decoration: none;
+            background-color: white;
+            border-radius: 5px;
+        }
+        #about{
+            position: absolute;
+            left: 50%;
+            color: black;
+            top: 20px;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: white;
+        }
+        #about:hover, #reg:hover {
+            background-color: black;
+            color: white;
+            transition-duration: .5s;
+        }
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <img src="{% static 'image/image.jpg'%}" alt="">
+    <a id="reg" href="">Registration</a>
+    <a id="about" href="">About</a>
+    
+    
+</body>
+</html>
+
+
+<!-- For interface -->
