@@ -5,6 +5,6 @@ from interface import views
 urlpatterns = [
     path('', views.home_page, name='re-home'),
     path('login/', views.login_or_registration, name='go-regis'),
-    
+    path('data/', views.user_data_see), 
 ]
 

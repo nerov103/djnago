@@ -12,13 +12,10 @@
 
     <div class="login">
         <h2 class="nonactive"> sign in </h2>
-       <h2 class="active"> sign up </h2> 
-      {% if errs %}
-    <div class="alert alert-danger" role="alert">
-        <h4 style="color: rgb(165, 8, 8);">A simple danger alert—check it out!</h4>
-    </div>
-    {% endif %}
-        <form method="POST">
+       <h2 class="active"> Sign Up </h2> 
+       <h1 style="color:green;">
+        {% if messages %}{% for mss in messages %}{{mss}}{% endfor %}{% endif %}</h1>
+        <form method="POST" action="{% url 'go-regis'%}" novalidate>
             {% csrf_token %}
           <input type="text" class="text" name="username">
            <span>username</span>
@@ -39,5 +36,5 @@
 </body>
 </html>
 
-<!-- interface app -->
+
 

@@ -8,16 +8,20 @@ def power(request):
         pasw = request.POST['password']
         
         
+        #from validate
+        if not usern or not pasw:
+            messages.error(request, 'Requead Uername and Password!!')
+            return render(request, 'home/login-fm.html')
+
         #Same program
-        if database.objects.filter(username=usern):
+        if database.objects.filter(username=usern).exists():
             ms = 'Users Already exits!'
             return render(request, 'home/login-fm.html', {'mass': ms})
         else:
             newuser = database.objects.create(username=usern, password=pasw)
             newuser.save()
-            succes = 'Login Successfully!'
-            # messages.add_message(request, messages.SUCCESS, 'Login Successfull!')
-            return render(request, 'home/login-fm.html', {'suc':succes})
+            messages.success(request, 'Login Successfully!')
+            return render(request, 'home/login-fm.html')
     else:
         print('get method!')
         return render(request, 'home/login-fm.html')

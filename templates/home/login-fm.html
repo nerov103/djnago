@@ -60,7 +60,8 @@
     <div class="login-container">
         <h2>Login</h2>
         <h1>{{mass}}</h1>
-        <form action="" method="POST">
+        {% if messages %} {% for mss in messages %} {{mss}} {% endfor %}{% endif %}
+        <form action="" method="POST" novalidate>
             {% csrf_token %}
             
             <label for="username">Username:</label>
@@ -71,8 +72,11 @@
 
             <button type="submit">Login</button>
         </form>
-        <h3 style="color: green;">{{suc}}</h3>
+        <!-- <h3 style="color: green;">{% if messages %} {{messages}} {% endif %}</h3> -->
     </div>
 
 </body>
 </html>
+
+
+
