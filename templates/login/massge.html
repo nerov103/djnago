@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Form</title>
+    <style>
+        .success{
+            color: green;
+            font-size: 20px;
+        }
+        .info{
+            color:orange;
+            font-size: 20px;
+        }
+        .warning{
+            color:black;
+            font-size: 20px;
+        }
+        .error{
+            color: red;
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>My Form</h2>
+    
+    <form  action="{%url 'go-regis'%}" method="POST" novalidate>
+        {% csrf_token %}
+        
+        {{ ff.as_p }}
+        
+        <!-- Using an input element for the submit button -->
+        <input type="submit" value="submit">
+        
+        <!-- Or, using a button element for the submit button -->
+        <!-- <button type="submit">Submit Form</button> -->
+    </form>
+    {% if messages %}
+    {% for massge in messages %}
+    <span {% if massge.tags %} class="alert alert-{{massge}}" {% endif %}>{{massge}}</span>
+    {% endfor %}
+    {% endif %}
+
+
+
+
+</body>
+</html>

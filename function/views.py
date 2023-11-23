@@ -5,3 +5,5 @@ from .forms import registration_from
 def registration(request):
     registration_obj = registration_from()
     return render(request, 'login/registration.html', {'data_regis':registration_obj})
+
+

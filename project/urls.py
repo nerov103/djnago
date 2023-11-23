@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('interface.urls')),
     path('function/', include('function.urls')),
+    path('coding/', include('coding.urls')),
+    path('sleep/', include('sleep.urls')),
 
 ]
 

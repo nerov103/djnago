@@ -24,6 +24,7 @@ form {
 
 .active {
   border-bottom: 2px solid #1161ed;
+  
 }
 
 .nonactive {
@@ -38,6 +39,8 @@ h2 {
   letter-spacing: 2px;
   display: inline-block;
   font-weight: 100;
+  
+  
 }
 
 h2:first-child {
@@ -97,6 +100,7 @@ h2,
 span,
 .custom-checkbox {
   margin-left: 20px;
+  
 }
 
 .custom-checkbox {
@@ -169,3 +173,5 @@ a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.2);
 }
+
+

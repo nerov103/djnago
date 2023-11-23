@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'coding',
     'function',
     'interface',
-    'play',
     'sleep',
 ]
 
