@@ -1,0 +1,130 @@
+#views.py file 
+from django.shortcuts import render
+from .models import database
+from django.contrib import messages
+# Create your views here.
+def power(request):
+    if request.method=='POST':
+        usern = request.POST['username']
+        pasw = request.POST['password']
+        
+        
+        #from validate
+        if not usern or not pasw:
+            messages.error(request, 'Requead Uername and Password!!')
+            return render(request, 'home/login-fm.html')
+
+        #Same program
+        if database.objects.filter(username=usern).exists():
+            ms = 'Users Already exits!'
+            return render(request, 'home/login-fm.html', {'mass': ms})
+        else:
+            newuser = database.objects.create(username=usern, password=pasw)
+            newuser.save()
+            messages.success(request, 'Login Successfully!')
+            return render(request, 'home/login-fm.html')
+    else:
+        print('get method!')
+        return render(request, 'home/login-fm.html')
+    
+#models.py file
+from django.db import models
+
+# Create your models here.
+class database(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+
+#admin.py file 
+from django.contrib import admin
+from .models import database
+# Register your models here.
+@admin.register(database)
+class databaseAdmin(admin.ModelAdmin):
+    list_display = ['username', 'password']
+
+#html template file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <h1>{{mass}}</h1>
+        {% if messages %} {% for mss in messages %} {{mss}} {% endfor %}{% endif %}
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <!-- <h3 style="color: green;">{% if messages %} {{messages}} {% endif %}</h3> -->
+    </div>
+
+</body>
+</html>
+
+#The End!
+#All right by Nerov Ahmead
+#facebook id link: nerov13
+
